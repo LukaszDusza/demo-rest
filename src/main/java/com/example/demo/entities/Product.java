@@ -1,7 +1,16 @@
 package com.example.demo.entities;
 
-import javax.persistence.*;
+import lombok.*;
 
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Set;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Entity
 @Table(name = "product")
 public class Product {
@@ -13,19 +22,28 @@ public class Product {
     @Column(name = "name")
     private String name;
 
-    public long getId() {
-        return id;
-    }
+    @Column(name = "description")
+    private String description;
 
-    public void setId(long id) {
-        this.id = id;
-    }
 
-    public String getName() {
-        return name;
-    }
+    @ManyToMany(mappedBy = "products")
+    private Set<Category> categories;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    @Column(name = "price")
+    private BigDecimal price;
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fk_producer")
+    private Producer producer;
+
+    @Column(name = "pieces")
+    private int pieces;
+
+    @Column(name = "promotion")
+    private boolean promotion;
+
+
+
+
 }
