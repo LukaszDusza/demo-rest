@@ -1,6 +1,8 @@
 package com.example.demo.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -27,6 +29,7 @@ public class Producer {
     private String description;
 
     @OneToMany(mappedBy = "producer",cascade = CascadeType.REMOVE) //, orphanRemoval = true
+    @JsonIgnore
     private Set<Product> product = new HashSet<>();
 
 

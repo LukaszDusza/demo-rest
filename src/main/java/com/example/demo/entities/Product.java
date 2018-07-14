@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -25,7 +26,7 @@ public class Product {
     @Column(name = "description")
     private String description;
 
-
+    @JsonIgnore
     @ManyToMany(mappedBy = "products")
     private Set<Category> categories;
 
@@ -33,6 +34,7 @@ public class Product {
     private BigDecimal price;
 
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_producer")
     private Producer producer;
