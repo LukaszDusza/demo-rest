@@ -42,4 +42,12 @@ public class HomeController {
         return "producers";
     }
 
+    @RequestMapping(value = "add", method = RequestMethod.GET)
+    public String add(Model model) {
+        model.addAttribute("categories", categoryController.categories());
+        model.addAttribute("products",  productController.products());
+        model.addAttribute("producers", producerController.producers());
+        return "add";
+    }
+
 }

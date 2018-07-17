@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link href="webjars/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+
+    <!--<style>-->
+    <!--table {-->
+    <!--font-family: arial, sans-serif;-->
+    <!--border-collapse: collapse;-->
+    <!--width: 100%;-->
+    <!--}-->
+
+    <!--td, th {-->
+    <!--border: 1px solid #dddddd;-->
+    <!--text-align: left;-->
+    <!--padding: 8px;-->
+    <!--}-->
+
+    <!--/*tr:nth-child(even) {*/-->
+    <!--/*background-color: #dddddd;*/-->
+    <!--/*}*/-->
+    <!--</style>-->
+</head>
+
+<body>
+
+<div class="container">
+    <!--<table>-->
+    <!--<tr>-->
+    <!--<th>name</th>-->
+    <!--<th>description</th>-->
+    <!--<th>categories</th>-->
+    <!--<th>pieces</th>-->
+    <!--<th>producer</th>-->
+    <!--<th>price</th>-->
+    <!--<th>promotion</th>-->
+    <!--</tr>-->
+    <!--<tr th:each="product : ${products}">-->
+    <!--<td><a href="#" th:text="${product.name}"></a></td>-->
+    <!--<td><a href="#" th:text="${product.description}"></a></td>-->
+    <!--<td><a href="/categories" th:text="${product.categories}"></a></td>-->
+    <!--<td><a href="#" th:text="${product.pieces}"></a></td>-->
+    <!--<td><a href="/producers" th:text="${product.producer}"></a></td>-->
+    <!--<td><a href="#" th:text="${product.price}"></a></td>-->
+    <!--<td><a href="#" th:text="${product.promotion}"></a></td>-->
+    <!--<br>-->
+    <!--</tr>-->
+    <!--</table>-->
+
+    <div class="row">
+        <div class="col-sm-6" style="min-height: 120px"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <form action="/api/products" method="post">
+                <div class="form-group">
+                    <label for="categorySelector">Wybierz kategorię</label>
+                    <select class="form-control" id="categorySelector" name="category">
+                        <option th:each="category : ${categories}" th:text="${category.name}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="producerSelector">Wybierz producenta</label>
+                    <select class="form-control" id="producerSelector" name="producer">
+                        <option th:each="producer : ${producers}" th:text="${producer.name}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="productField">Wpisz nazwę produktu</label>
+                    <textarea class="form-control" id="productField" rows="1" name="name"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="descriptionField">Opisz produkt</label>
+                    <textarea class="form-control" id="descriptionField" rows="2" name="description"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="piecesField">Ilość sztuk na magazynie</label>
+                    <input type="number" class="form-control" id="piecesField" rows="1" name="pieces"></input>
+                </div>
+
+                <div class="form-group">
+                    <label for="priceField">Cena za sztukę</label>
+                    <input type="text" class="form-control" id="priceField" rows="1" name="price"></input>
+                </div>
+
+                <div class="group">
+                    <input type="checkbox" id="gridCheck1" name="promotion">
+                    <label class="form-check-label" for="gridCheck1">
+                        Czy w promocji?
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary">dodaj produkt</button>
+                <a href="/products">anuluj</a>
+
+                <!--<div class="form-group">-->
+                <!--<label for="exampleFormControlTextarea1">Example textarea</label>-->
+                <!--<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>-->
+                <!--</div>-->
+            </form>
+
+
+        </div>
+    </div>
+
+
+</div>
+
+
+</body>
+</html>

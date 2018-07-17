@@ -40,9 +40,10 @@ public class Product {
     private Producer producer;
 
     @Column(name = "pieces")
-    private int pieces;
+    private Integer pieces;
 
     @Column(name = "promotion")
     private boolean promotion;
+
 
 }

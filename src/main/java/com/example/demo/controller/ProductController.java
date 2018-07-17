@@ -2,6 +2,8 @@ package com.example.demo.controller;
 
 
 import com.example.demo.Mapper.ProductMapper;
+import com.example.demo.Repository.CategoryRepository;
+import com.example.demo.Repository.ProducerRepository;
 import com.example.demo.Repository.ProductRepository;
 import com.example.demo.dtos.ProductDto;
 import com.example.demo.entities.Category;
@@ -24,6 +26,12 @@ public class ProductController {
 
     @Autowired
     ProductRepository productRepository;
+
+    @Autowired
+    CategoryRepository categoryRepository;
+
+    @Autowired
+    ProducerRepository producerRepository;
 
 //    @GetMapping("products")
 //    public List<Product> products() {
@@ -56,10 +64,38 @@ public class ProductController {
     }
 
 
+//    @RequestMapping(value = "products", method = RequestMethod.POST)
+//    public ResponseEntity<Product> add(@Valid @RequestBody Product product) {
+//        productRepository.save(product);
+//        return new ResponseEntity<>(product, HttpStatus.OK);
+//    }
+
     @RequestMapping(value = "products", method = RequestMethod.POST)
-    public ResponseEntity<Product> add(@Valid @RequestBody Product product) {
+    @ResponseBody
+    public void add(@RequestParam(value = "category") String category, @RequestParam(value = "producer") String producer,
+                    @RequestParam(value = "name") String name, @RequestParam(value = "description") String description,
+                    @RequestParam(value = "pieces") String pieces, @RequestParam(value = "price") String price,
+                    @RequestParam(value = "promotion") boolean promotion) {
+
+
+        List<Category> cat = categoryRepository.findByTitle(category);
+        Set<Category> categories = new HashSet<>(cat);
+        System.out.println(cat.toString());
+
+        Producer prod = producerRepository.findByTitle(producer);
+
+        Product product = new Product();
+
+        product.setName(name);
+        product.setDescription(description);
+        product.setCategories(categories);
+        product.setPrice(new BigDecimal(price));
+        product.setProducer(prod);
+        product.setPieces(Integer.valueOf(pieces));
+        product.setPromotion(promotion);
+
         productRepository.save(product);
-        return new ResponseEntity<>(product, HttpStatus.OK);
+      //  return new ResponseEntity<>(product, HttpStatus.OK);
     }
 
 
