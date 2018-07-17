@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Categories</title>
 
     <link href="webjars/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <script src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -30,24 +30,18 @@
 <body>
 
 <div class="container">
+    <p style="text-align: center">Categories</p>
     <table>
+        <a href="/products"><< back to product list </a>
         <tr>
             <th>name</th>
             <th>description</th>
-            <th>categories</th>
-            <th>pieces</th>
-            <th>producer</th>
-            <th>price</th>
-            <th>promotion</th>
+            <th>products</th>
         </tr>
-        <tr th:each="product : ${products}">
-            <td><a href="#" th:text="${product.name}"></a></td>
-            <td><a href="#" th:text="${product.description}"></a></td>
-            <td><a href="/categories" th:text="${product.categories}"></a></td>
-            <td><a href="#" th:text="${product.pieces}"></a></td>
-            <td><a href="/producers" th:text="${product.producer}"></a></td>
-            <td><a href="#" th:text="${product.price}"></a></td>
-            <td><a href="#" th:text="${product.promotion}"></a></td>
+        <tr th:each="o : ${producers}">
+            <td><a href="#" th:text="${o.name}"></a></td>
+            <td><a href="#" th:text="${o.description}"></a></td>
+            <td><a href="#" th:text="${o.products}"></a></td>
             <br>
         </tr>
     </table>

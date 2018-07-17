@@ -55,12 +55,9 @@ public class ProductController {
         return productDtos;
     }
 
+
     @RequestMapping(value = "products", method = RequestMethod.POST)
     public ResponseEntity<Product> add(@Valid @RequestBody Product product) {
-
-
-
-
         productRepository.save(product);
         return new ResponseEntity<>(product, HttpStatus.OK);
     }

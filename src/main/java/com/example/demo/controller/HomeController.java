@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 
-import com.example.demo.Repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,16 +13,33 @@ public class HomeController {
     @Autowired
     ProductController productController;
 
+    @Autowired
+    CategoryController categoryController;
+
+    @Autowired
+    ProducerController producerController;
+
     // @RequestMapping(value = "home", method = RequestMethod.GET)
     public String home() {
         return "index";
     }
 
     @RequestMapping(value = "products", method = RequestMethod.GET)
-    public String messages(Model model) {
+    public String products(Model model) {
         model.addAttribute("products", productController.products());
         return "products";
     }
 
+    @RequestMapping(value = "categories", method = RequestMethod.GET)
+    public String categories(Model model) {
+        model.addAttribute("categories", categoryController.categories());
+        return "categories";
+    }
+
+    @RequestMapping(value = "producers", method = RequestMethod.GET)
+    public String producers(Model model) {
+        model.addAttribute("producers", producerController.producers());
+        return "producers";
+    }
 
 }
