@@ -1,17 +1,19 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Entity
 @Table(name = "product")
 public class Product {
@@ -26,15 +28,13 @@ public class Product {
     @Column(name = "description")
     private String description;
 
-    @JsonIgnore
-    @ManyToMany(mappedBy = "products")
-    private Set<Category> categories;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "products")
+    private Set<Category> categories = new HashSet<>();
 
     @Column(name = "price")
     private BigDecimal price;
 
 
-    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_producer")
     private Producer producer;
@@ -44,8 +44,5 @@ public class Product {
 
     @Column(name = "promotion")
     private boolean promotion;
-
-
-
 
 }

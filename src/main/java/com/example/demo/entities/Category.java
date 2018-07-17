@@ -1,17 +1,20 @@
 package com.example.demo.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@ToString
 @Entity
 @Table(name = "category")
 public class Category {
@@ -26,11 +29,10 @@ public class Category {
     @Column(name = "description")
     private String description;
 
-    @ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
     @JoinTable(
             name = "category_product",
             joinColumns = { @JoinColumn(name = "category_id") },
             inverseJoinColumns = { @JoinColumn(name = "product_id")} )
-    @JsonIgnore
-    private Set<Product> products;
+    private Set<Product> products = new HashSet<>();
 }

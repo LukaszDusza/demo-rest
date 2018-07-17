@@ -1,9 +1,12 @@
 package com.example.demo.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -14,6 +17,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@ToString
 @Entity
 @Table(name = "producer")
 public class Producer {
@@ -28,8 +32,7 @@ public class Producer {
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "producer",cascade = CascadeType.REMOVE) //, orphanRemoval = true
-    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "producer",cascade = CascadeType.ALL) //, orphanRemoval = true
     private Set<Product> product = new HashSet<>();
 
 

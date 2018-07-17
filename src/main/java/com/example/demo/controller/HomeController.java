@@ -11,18 +11,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController {
 
-   // @RequestMapping(value = "home", method = RequestMethod.GET)
+    @Autowired
+    ProductController productController;
+
+    // @RequestMapping(value = "home", method = RequestMethod.GET)
     public String home() {
         return "index";
     }
 
-    @Autowired
-    ProductRepository productRepository;
-
-
     @RequestMapping(value = "products", method = RequestMethod.GET)
     public String messages(Model model) {
-        model.addAttribute("products", productRepository.findAll());
+        model.addAttribute("products", productController.products());
         return "products";
     }
 
