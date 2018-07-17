@@ -16,5 +16,5 @@ public interface CategoryRepository extends JpaRepository<Category, Long>, JpaSp
 
     @Async
     @Query(value = FIND_BY_TITLE, nativeQuery = true)
-    List<Category> findByTitle(String title);
+    Category findByTitle(String title);
 }

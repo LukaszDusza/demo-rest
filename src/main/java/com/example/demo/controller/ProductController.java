@@ -78,8 +78,8 @@ public class ProductController {
                     @RequestParam(value = "promotion") boolean promotion) {
 
 
-        List<Category> cat = categoryRepository.findByTitle(category);
-        Set<Category> categories = new HashSet<>(cat);
+        Category cat = categoryRepository.findByTitle(category);
+
         System.out.println(cat.toString());
 
         Producer prod = producerRepository.findByTitle(producer);
@@ -88,7 +88,7 @@ public class ProductController {
 
         product.setName(name);
         product.setDescription(description);
-        product.setCategories(categories);
+        product.setCategory(cat);
         product.setPrice(new BigDecimal(price));
         product.setProducer(prod);
         product.setPieces(Integer.valueOf(pieces));

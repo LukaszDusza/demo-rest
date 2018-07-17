@@ -11,16 +11,17 @@ public class ProductMapper implements Mapper<Product, ProductDto> {
     @Override
     public ProductDto map(Product from) {
 
-        String categories = from.getCategories()
-                .stream()
-                .map(CategoriesToString.INSTANCE)
-                .collect(Collectors.joining(" ,"));
+//        String categories = from.getCategories()
+//                .stream()
+//                .map(CategoriesToString.INSTANCE)
+//                .collect(Collectors.joining(" ,"));
 
         return new ProductDto (
 
                 from.getName(),
                 from.getDescription(),
-                categories, from.getPrice(),
+                from.getCategory().getName(),
+                from.getPrice(),
                 from.getProducer().getName(),
                 from.getPieces(),
                 from.isPromotion()

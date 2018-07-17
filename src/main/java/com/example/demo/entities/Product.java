@@ -28,12 +28,18 @@ public class Product {
     @Column(name = "description")
     private String description;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "products")
-    private Set<Category> categories = new HashSet<>();
+    //@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "products")
+//    private Set<Category> categories = new HashSet<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fk_category")
+    private Category category;
+
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product", cascade = CascadeType.ALL) //, orphanRemoval = true
+//    private Set<Category> categories = new HashSet<>();
 
     @Column(name = "price")
     private BigDecimal price;
-
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_producer")
