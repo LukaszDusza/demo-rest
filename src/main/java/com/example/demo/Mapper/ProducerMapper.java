@@ -4,6 +4,7 @@ import com.example.demo.dtos.ProducerDto;
 import com.example.demo.entities.Producer;
 import com.example.demo.entities.Product;
 
+import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -11,10 +12,11 @@ public class ProducerMapper implements Mapper<Producer, ProducerDto>{
     @Override
     public ProducerDto map(Producer from) {
 
-        String products = from.getProduct()
+        List<String> products = from.getProduct()
                 .stream()
                 .map(ProductsToString.INSTANCE)
-                .collect(Collectors.joining(" ,"));
+                .collect(Collectors.toList());
+
 
         return new ProducerDto(from.getName(), from.getDescription(), products);
     }

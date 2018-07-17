@@ -79,11 +79,7 @@ public class ProductController {
 
 
         Category cat = categoryRepository.findByTitle(category);
-
-        System.out.println(cat.toString());
-
         Producer prod = producerRepository.findByTitle(producer);
-
         Product product = new Product();
 
         product.setName(name);
@@ -95,7 +91,7 @@ public class ProductController {
         product.setPromotion(promotion);
 
         productRepository.save(product);
-      //  return new ResponseEntity<>(product, HttpStatus.OK);
+     //   return "products";
     }
 
 

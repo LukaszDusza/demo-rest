@@ -57,7 +57,7 @@
     </div>
     <div class="row">
         <div class="col-sm-6">
-            <form action="/api/products" method="post">
+            <form action="/add-new" method="post">
                 <div class="form-group">
                     <label for="categorySelector">Wybierz kategorię</label>
                     <select class="form-control" id="categorySelector" name="category">
@@ -90,11 +90,15 @@
                     <input type="text" class="form-control" id="priceField" rows="1" name="price"></input>
                 </div>
 
+                <label>Czy w promocji?</label>
                 <div class="group">
-                    <input type="checkbox" id="gridCheck1" name="promotion">
-                    <label class="form-check-label" for="gridCheck1">
-                        Czy w promocji?
-                    </label>
+                    <label class="form-check-label" for="gridCheck1"> tak </label>
+                    <input type="radio" id="gridCheck1" name="promotion" value="true" >
+                </div>
+
+                <div class="group">
+                    <label class="form-check-label" for="gridCheck2"> nie </label>
+                    <input type="radio" id="gridCheck2" name="promotion" value="false" checked>
                 </div>
 
                 <button type="submit" class="btn btn-primary">dodaj produkt</button>

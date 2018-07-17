@@ -40,6 +40,7 @@
             <th>producer</th>
             <th>price</th>
             <th>promotion</th>
+
         </tr>
         <tr th:each="product : ${products}">
             <td><a href="#" th:text="${product.name}"></a></td>
@@ -49,6 +50,17 @@
             <td><a href="/producers" th:text="${product.producer}"></a></td>
             <td><a href="#" th:text="${product.price}"></a></td>
             <td><a href="#" th:text="${product.promotion}"></a></td>
+            <td>
+                <form action="#" th:action="@{/delete}" th:object="${products}" method="get" id="deleteform">
+                    <input type="hidden" name="delete">
+                </form>
+                <button type="submit" form="deleteform">delete</button>
+            </td>
+
+            <td>
+                <button>update</button>
+            </td>
+
             <br>
         </tr>
         <a href="/add">dodaj nowy produkt >></a>

@@ -1,7 +1,10 @@
 package com.example.demo.dtos;
 
 
+import com.example.demo.entities.Product;
 import lombok.*;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -14,5 +17,5 @@ public class ProducerDto {
 
     private String name;
     private String description;
-    private String products;
+    private List<String> products;
 }
