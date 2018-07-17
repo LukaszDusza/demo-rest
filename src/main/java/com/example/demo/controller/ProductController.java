@@ -21,7 +21,7 @@ import java.util.*;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/api/v1/")
 public class ProductController {
 
     @Autowired
@@ -93,7 +93,6 @@ public class ProductController {
         productRepository.save(product);
      //   return "products";
     }
-
 
 
 }
