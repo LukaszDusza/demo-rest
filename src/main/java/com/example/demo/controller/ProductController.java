@@ -100,10 +100,15 @@ public class ProductController {
 
     @RequestMapping(value = "products", method = RequestMethod.POST)
     public ResponseEntity<Product> addProduct(
-            @RequestParam(value = "category") String category, @RequestParam(value = "producer") String producer,
-            @RequestParam(value = "name") String name, @RequestParam(value = "description") String description,
-            @RequestParam(value = "pieces") String pieces, @RequestParam(value = "price") String price,
-            @RequestParam(value = "promotion") boolean promotion, @RequestParam(value = "serialNo") String serialNo) {
+            @RequestParam(value = "category") String category,
+            @RequestParam(value = "producer") String producer,
+            @RequestParam(value = "name") String name,
+            @RequestParam(value = "description") String description,
+            @RequestParam(value = "pieces") String pieces,
+            @RequestParam(value = "price") String price,
+            @RequestParam(value = "promotion") boolean promotion,
+            @RequestParam(value = "serialNo") String serialNo,
+            @RequestParam(value = "picture") String picture) {
 
         Optional<Product> optionalProduct = productRepository.findBySerialNo(serialNo);
         Optional<Category> optionalCategory = categoryRepository.findOneByTitle(category);
@@ -120,6 +125,8 @@ public class ProductController {
             product.setPieces(Integer.valueOf(pieces));
             product.setPromotion(promotion);
             product.setSerialNo(serialNo);
+            product.setPicture(picture);
+
             productRepository.save(product);
 
             return ResponseEntity.ok().build();
@@ -134,7 +141,8 @@ public class ProductController {
                                                  @RequestParam(value = "name", required = false) String name,
                                                  @RequestParam(value = "price", required = false) String price,
                                                  @RequestParam(value = "pieces", required = false) String pieces,
-                                                 @RequestParam(value = "promotion", required = false) boolean promotion) {
+                                                 @RequestParam(value = "promotion", required = false) boolean promotion,
+                                                 @RequestParam(value = "picture", required = false) String picture) {
 
         Optional<Product> productOptional = productRepository.findBySerialNo(serialNo);
 
@@ -149,6 +157,7 @@ public class ProductController {
             product.setPrice(new BigDecimal(price));
             product.setPieces(Integer.valueOf(pieces));
             product.setPromotion(promotion);
+            product.setPicture(picture);
 
             productRepository.save(product);
 

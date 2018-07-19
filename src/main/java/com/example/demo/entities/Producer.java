@@ -12,12 +12,7 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
-@ToString
+@Getter @Setter @AllArgsConstructor @NoArgsConstructor @ToString
 @Entity
 @Table(name = "producer")
 public class Producer {
@@ -35,8 +30,8 @@ public class Producer {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "producer",cascade = CascadeType.ALL) //, orphanRemoval = true
     private Set<Product> product = new HashSet<>();
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "producers")
-    private Set<Category> categories = new HashSet<>();
+//    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "producers")
+//    private Set<Category> categories = new HashSet<>();
 
 
 }

@@ -15,12 +15,12 @@ public class CategoryMapper implements Mapper<Category, CategoryDto>{
     @Override
     public CategoryDto map(Category from) {
 
-        List<String> producers = from.getProducers()
-                .stream()
-                .map(ProducersToString.INSTANCE)
-                .collect(Collectors.toList());
+//        List<String> producers = from.getProducers()
+//                .stream()
+//                .map(ProducersToString.INSTANCE)
+//                .collect(Collectors.toList());
 
-        return new CategoryDto(from.getName(), from.getDescription(), producers);
+        return new CategoryDto(from.getName(), from.getDescription());
     }
 
     private enum ProducersToString implements Function<Producer, String> {

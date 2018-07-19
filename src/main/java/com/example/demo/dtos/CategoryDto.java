@@ -15,5 +15,5 @@ public class CategoryDto {
 
     private String name;
     private String description;
-    private List<String> producers;
+ //   private List<String> producers;
 }

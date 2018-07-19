@@ -10,11 +10,7 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
+@Getter @Setter @AllArgsConstructor @NoArgsConstructor @ToString
 @Entity
 @Table(name = "category")
 public class Category {
@@ -37,10 +33,13 @@ public class Category {
 //    @JoinColumn(name = "fk_product")
 //    private Product product;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
-    @JoinTable(
-            name = "category_producer",
-            joinColumns = { @JoinColumn(name = "category_id") },
-            inverseJoinColumns = { @JoinColumn(name = "producer_id")} )
-    private Set<Producer> producers = new HashSet<>();
+//    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+//    @JoinTable(
+//            name = "category_producer",
+//            joinColumns = { @JoinColumn(name = "category_id") },
+//            inverseJoinColumns = { @JoinColumn(name = "producer_id")} )
+//    private Set<Producer> producers = new HashSet<>();
+
+
+
 }

@@ -18,13 +18,13 @@ public class ProducerMapper implements Mapper<Producer, ProducerDto>{
                 .map(ProductsToString.INSTANCE)
                 .collect(Collectors.toList());
 
-        List<String> categories = from.getCategories()
-                .stream()
-                .map(CategoriesToString.INSTANCE)
-                .collect(Collectors.toList());
+//        List<String> categories = from.getCategories()
+//                .stream()
+//                .map(CategoriesToString.INSTANCE)
+//                .collect(Collectors.toList());
 
 
-        return new ProducerDto(from.getName(), from.getDescription(), products, categories);
+        return new ProducerDto(from.getName(), from.getDescription(), products);
     }
 
     private enum ProductsToString implements Function<Product, String> {

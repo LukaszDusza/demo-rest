@@ -10,10 +10,7 @@ import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter @Setter @AllArgsConstructor @NoArgsConstructor
 @Entity
 @Table(name = "product")
 public class Product {
@@ -54,5 +51,7 @@ public class Product {
     @Column(name = "serialNo")
     private String serialNo;
 
+    @Column(name = "picture") //zmienic w bazie danych na long text, gdy linki z google.
+    private String picture;
 
 }

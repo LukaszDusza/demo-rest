@@ -21,6 +21,7 @@ public class ProductDto {
     private int pieces;
     private boolean promotion;
     private String serialNo;
+    private String picture;
 
 
 }

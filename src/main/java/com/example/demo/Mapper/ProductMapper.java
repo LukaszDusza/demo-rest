@@ -25,7 +25,8 @@ public class ProductMapper implements Mapper<Product, ProductDto> {
                 from.getProducer().getName(),
                 from.getPieces(),
                 from.isPromotion(),
-                from.getSerialNo()
+                from.getSerialNo(),
+                from.getPicture()
         );
     }
 

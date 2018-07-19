@@ -46,7 +46,8 @@ public class CategoryController {
     @RequestMapping(value = "categories", method = RequestMethod.POST)
     public ResponseEntity add (
             @RequestParam(value = "title") String title,
-            @RequestParam(value = "description") String description) {
+            @RequestParam(value = "description") String description)
+             {
 
         Optional<Category> categoryOptional = categoryRepository.findOneByTitle(title);
 

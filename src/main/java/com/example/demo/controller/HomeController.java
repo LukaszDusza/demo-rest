@@ -57,11 +57,16 @@ public class HomeController {
     // @ResponseBody
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String add(Model model,
-                      @RequestParam(value = "category") String category, @RequestParam(value = "producer") String producer,
-                      @RequestParam(value = "name") String name, @RequestParam(value = "description") String description,
-                      @RequestParam(value = "pieces") String pieces, @RequestParam(value = "price") String price,
-                      @RequestParam(value = "promotion") boolean promotion, @RequestParam(value = "serialNo") String serialNo) {
-        productController.addProduct(category, producer, name, description, pieces, price, promotion, serialNo);
+                      @RequestParam(value = "category") String category,
+                      @RequestParam(value = "producer") String producer,
+                      @RequestParam(value = "name") String name,
+                      @RequestParam(value = "description") String description,
+                      @RequestParam(value = "pieces") String pieces,
+                      @RequestParam(value = "price") String price,
+                      @RequestParam(value = "promotion") boolean promotion,
+                      @RequestParam(value = "serialNo") String serialNo,
+                      @RequestParam(value = "picture", required = false) String picture) {
+        productController.addProduct(category, producer, name, description, pieces, price, promotion, serialNo, picture);
         return products(model);
     }
 
@@ -90,8 +95,9 @@ public class HomeController {
                          @RequestParam(value = "name", required = false) String name,
                          @RequestParam(value = "price", required = false) String price,
                          @RequestParam(value = "pieces", required = false) String pieces,
-                         @RequestParam(value = "promotion", required = false) boolean promotion) {
-        productController.updateProduct(serialNo, description, name, price, pieces, promotion);
+                         @RequestParam(value = "promotion", required = false) boolean promotion,
+                         @RequestParam(value = "picture", required = false) String picture) {
+        productController.updateProduct(serialNo, description, name, price, pieces, promotion, picture);
         return products(model);
     }
 
