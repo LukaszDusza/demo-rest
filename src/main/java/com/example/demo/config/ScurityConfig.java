@@ -15,20 +15,41 @@ public class ScurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         super.configure(httpSecurity);
-        httpSecurity.authorizeRequests()
-                .antMatchers("/")
-                .permitAll()
-         // .antMatchers("/api/user/*").hasRole(USER)
+        httpSecurity
+                .csrf()
+                .disable()
+                .authorizeRequests()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .httpBasic();
+              //  .anyRequest()
+              //  .authenticated()
+             //   .and()
+             //   .httpBasic();
+
+
+             //   .antMatchers( "/**").permitAll()
+             //   .antMatchers("/api/**").hasRole(ADMIN)
+             //   .anyRequest()
+             //   .authenticated()
+              //  .antMatchers("/api/**")
+               // .hasRole(ADMIN)
+              //  .antMatchers("/")
+             //   .permitAll()
+             //   .antMatchers("/api").hasRole(ADMIN)
         // .antMatchers("/api/admin/*").hasRole(ADMIN)
        // .and()
 
         /*ENABLE AUTH*/
-         .anyRequest() //zamist tego co na powyzej
-         .authenticated() //zamist tego co powyzej
-        .and() //nie potrzebne gdy gora odkomentowana
-        .formLogin();
+       //  .anyRequest() //zamist tego co na powyzej
+      //   .authenticated() //zamist tego co powyzej
+      //  .and() //nie potrzebne gdy gora odkomentowana
 
-        httpSecurity.csrf().disable(); //odblokowuje POST request (403 forbidden)
+       // .and()
+       // .logout();
+
+     //   httpSecurity.csrf().disable(); //odblokowuje POST request (403 forbidden)
     }
 
     @Autowired
@@ -37,11 +58,11 @@ public class ScurityConfig extends WebSecurityConfigurerAdapter {
             auth.inMemoryAuthentication()
                     .withUser("sa")
                     .password("{noop}sa")
-                    .roles(USER)
+                    .roles(USER,ADMIN)
                     .and()
-                    .withUser("admin")
-                    .password("{noop}admin")
-                    .roles(USER, ADMIN);
+                    .withUser("user")
+                    .password("{noop}user")
+                    .roles(USER);
         } catch (Exception e) {
             e.printStackTrace();
         }
