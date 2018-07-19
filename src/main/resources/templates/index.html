@@ -2,21 +2,56 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Demo sklepu</title>
 
     <link href="webjars/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <script src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
 
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        /*tr:nth-child(even) {*/
+        /*background-color: #dddddd;*/
+        /*}*/
+    </style>
 </head>
 <body>
-<center>Hello World!</center>
 
-<a href="/products"> product list</a>
-<br>
-<a href="/add">add new product</a>
-<br>
-<a href="/swagger-ui.html"> swagger</a>
+<div class="container">
+
+    <div class="row" style="height: 150px"></div>
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <table>
+                <tr>
+                    <th>Menu aplikacji</th>
+                    <td>Sklep demo - Hello World!</td>
+                </tr>
+                <tr>
+                    <td><a href="/products"> product list</a></td>
+                    <td>lista produktów</td>
+                </tr>
+                <tr>
+                    <td><a href="/swagger-ui.html"> swagger</a></td>
+                    <td>dokumentacja REST API Swagger 2</td>
+                </tr>
+            </table>
+
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+</div>
 
 
 </body>

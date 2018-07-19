@@ -18,4 +18,5 @@ public class ProducerDto {
     private String name;
     private String description;
     private List<String> products;
+    private List<String> categories;
 }

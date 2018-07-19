@@ -35,5 +35,8 @@ public class Producer {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "producer",cascade = CascadeType.ALL) //, orphanRemoval = true
     private Set<Product> product = new HashSet<>();
 
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "producers")
+    private Set<Category> categories = new HashSet<>();
+
 
 }

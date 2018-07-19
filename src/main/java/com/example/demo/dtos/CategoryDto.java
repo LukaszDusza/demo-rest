@@ -2,6 +2,8 @@ package com.example.demo.dtos;
 
 import lombok.*;
 
+import java.util.List;
+
 
 @Getter
 @Setter
@@ -13,5 +15,5 @@ public class CategoryDto {
 
     private String name;
     private String description;
-  //  private String products;
+    private List<String> producers;
 }

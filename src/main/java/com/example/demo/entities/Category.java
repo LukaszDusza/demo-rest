@@ -29,12 +29,6 @@ public class Category {
     @Column(name = "description")
     private String description;
 
-//    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
-//    @JoinTable(
-//            name = "category_product",
-//            joinColumns = { @JoinColumn(name = "category_id") },
-//            inverseJoinColumns = { @JoinColumn(name = "product_id")} )
-//    private Set<Product> products = new HashSet<>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "category", cascade = CascadeType.ALL) //, orphanRemoval = true
     private Set<Product> product = new HashSet<>();
@@ -42,4 +36,11 @@ public class Category {
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "fk_product")
 //    private Product product;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "category_producer",
+            joinColumns = { @JoinColumn(name = "category_id") },
+            inverseJoinColumns = { @JoinColumn(name = "producer_id")} )
+    private Set<Producer> producers = new HashSet<>();
 }

@@ -1,6 +1,7 @@
 package com.example.demo.Mapper;
 
 import com.example.demo.dtos.ProducerDto;
+import com.example.demo.entities.Category;
 import com.example.demo.entities.Producer;
 import com.example.demo.entities.Product;
 
@@ -17,8 +18,13 @@ public class ProducerMapper implements Mapper<Producer, ProducerDto>{
                 .map(ProductsToString.INSTANCE)
                 .collect(Collectors.toList());
 
+        List<String> categories = from.getCategories()
+                .stream()
+                .map(CategoriesToString.INSTANCE)
+                .collect(Collectors.toList());
 
-        return new ProducerDto(from.getName(), from.getDescription(), products);
+
+        return new ProducerDto(from.getName(), from.getDescription(), products, categories);
     }
 
     private enum ProductsToString implements Function<Product, String> {
@@ -27,6 +33,15 @@ public class ProducerMapper implements Mapper<Producer, ProducerDto>{
         @Override
         public String apply(Product product) {
             return product.getName();
+        }
+    }
+
+    private enum CategoriesToString implements Function<Category, String> {
+        INSTANCE;
+
+        @Override
+        public String apply(Category category) {
+            return category.getName();
         }
     }
 }

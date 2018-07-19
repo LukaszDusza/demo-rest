@@ -24,6 +24,8 @@ public class HomeController {
         return "index";
     }
 
+    // ======================================== get ====================================================================
+
     @RequestMapping(value = "products", method = RequestMethod.GET)
     public String products(Model model) {
         model.addAttribute("products", productController.getProducts());
@@ -31,8 +33,8 @@ public class HomeController {
     }
 
     @RequestMapping(value = "categories", method = RequestMethod.GET)
-    public String categories(Model model) {
-        model.addAttribute("categories", categoryController.categories());
+    public String categories(Model model, @RequestParam(value = "title", required = false) String title) {
+        model.addAttribute("categories", categoryController.categories(title));
         return "categories";
     }
 
@@ -44,8 +46,9 @@ public class HomeController {
 
     // ======================================== add ====================================================================
     @RequestMapping(value = "add-form", method = RequestMethod.GET)
-    public String add(Model model) {
-        model.addAttribute("categories", categoryController.categories());
+    public String add(Model model, @RequestParam(value = "title",required = false) String title) {
+        //pobiera kategorie, produkty i producentów, nastepnie kieruje na stronę z dodawaniem nowego produktu.
+        model.addAttribute("categories", categoryController.categories(title));
         model.addAttribute("products", productController.getProducts());
         model.addAttribute("producers", producerController.producers());
         return "add";

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Add product</title>
 
     <link href="webjars/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <script src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -86,13 +86,18 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary">dodaj produkt</button>
-                <a href="/products">cofnij do listy produktów</a>
+                <!--<a href="/products">cofnij do listy produktów</a>-->
+
+                <button type="submit" class="btn btn-default" form="prod">wróć</button>
 
                 <!--<div class="form-group">-->
                 <!--<label for="exampleFormControlTextarea1">Example textarea</label>-->
                 <!--<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>-->
                 <!--</div>-->
             </form>
+
+            <!--tylko po to by obsluzyc przycis powrotu do listy produktów-->
+            <form action="/products" method="get" id="prod"></form>
 
 
         </div>

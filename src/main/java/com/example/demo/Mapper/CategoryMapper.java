@@ -2,8 +2,10 @@ package com.example.demo.Mapper;
 
 import com.example.demo.dtos.CategoryDto;
 import com.example.demo.entities.Category;
+import com.example.demo.entities.Producer;
 import com.example.demo.entities.Product;
 
+import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -13,20 +15,20 @@ public class CategoryMapper implements Mapper<Category, CategoryDto>{
     @Override
     public CategoryDto map(Category from) {
 
-//        String products = from.getProducts()
-//                .stream()
-//                .map(ProductToString.INSTANCE)
-//                .collect(Collectors.joining(" ,"));
+        List<String> producers = from.getProducers()
+                .stream()
+                .map(ProducersToString.INSTANCE)
+                .collect(Collectors.toList());
 
-        return new CategoryDto(from.getName(), from.getDescription());
+        return new CategoryDto(from.getName(), from.getDescription(), producers);
     }
 
-    private enum ProductToString implements Function<Product, String> {
+    private enum ProducersToString implements Function<Producer, String> {
         INSTANCE;
 
         @Override
-        public String apply(Product product) {
-            return product.getName();
+        public String apply(Producer producer) {
+            return producer.getName();
         }
     }
 
