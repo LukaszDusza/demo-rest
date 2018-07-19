@@ -27,6 +27,15 @@
 
         }
 
+        th {
+            background-color: whitesmoke;
+        }
+
+        .button {
+            margin-right: 3px;
+            margin-bottom: 8px;
+        }
+
         /*tr:nth-child(even) {*/
         /*background-color: #dddddd;*/
         /*}*/
@@ -96,21 +105,21 @@
                 <!--PRZYCISKI-->
 
                 <form action="/add-form" method="get" id="update"></form>
-                <button type="submit" form="update" class="btn btn-default">dodaj nowy produkt</button>
+                <button type="submit" form="update" class="btn btn-default button">dodaj nowy produkt</button>
 
 
                 <form action="/categories" method="get" id="category"></form>
-                <button type="submit" form="category" class="btn btn-default">przejdz do kategorii</button>
+                <button type="submit" form="category" class="btn btn-default button">przejdz do kategorii</button>
 
 
                 <form action="/producers" method="get" id="producer"></form>
-                <button type="submit" form="producer" class="btn btn-default">przejdź do producentów</button>
+                <button type="submit" form="producer" class="btn btn-default button">przejdź do producentów</button>
 
                 <form action="/logout" method="get" id="logout"></form>
-                <button type="submit" form="logout" class="btn btn-default">wyloguj</button>
+                <button type="submit" form="logout" class="btn btn-default button">wyloguj</button>
 
                 <form action="/" method="get" id="menu"></form>
-                <button type="submit" form="menu" style="float: left" class="btn btn-default">menu główne</button>
+                <button type="submit" form="menu" style="float: left" class="btn btn-default button">menu główne</button>
 
 
             </table>
