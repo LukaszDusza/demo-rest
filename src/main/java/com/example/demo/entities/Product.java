@@ -51,5 +51,8 @@ public class Product {
     @Column(name = "promotion")
     private boolean promotion;
 
+    @Column(name = "serialNo")
+    private String serialNo;
+
 
 }

@@ -8,6 +8,7 @@
     <script src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="webjars/jquery/1.9.1/jquery.min.js"></script>
 
+
     <style>
         table {
             font-family: arial, sans-serif;
@@ -40,6 +41,7 @@
             <th>producer</th>
             <th>price</th>
             <th>promotion</th>
+            <th>serial no.</th>
 
         </tr>
         <tr th:each="product : ${products}">
@@ -50,20 +52,31 @@
             <td><a href="/producers" th:text="${product.producer}"></a></td>
             <td><a href="#" th:text="${product.price}"></a></td>
             <td><a href="#" th:text="${product.promotion}"></a></td>
+            <td><a href="#" th:text="${product.serialNo}"></a></td>
             <td>
-                <form action="#" th:action="@{/delete}" th:object="${products}" method="get" id="deleteform">
-                    <input type="hidden" name="delete">
+                <!--do nadawania nazw formularzy aby kazdy przycisk kasowal dany produkt-->
+                <form action="/delete"  method="post" th:id="${product.serialNo}">
+                    <input type="hidden" name="del" th:value="${product.serialNo}">
                 </form>
-                <button type="submit" form="deleteform">delete</button>
+                <button type="submit" th:form="${product.serialNo}">delete</button>
             </td>
 
             <td>
-                <button>update</button>
+                <form action="/update-form"  method="get" th:id="${product.serialNo} + update">
+                    <input type="hidden" name="serialNo" th:value="${product.serialNo}">
+                    <input type="hidden" name="description" th:value="${product.description}">
+                    <input type="hidden" name="name" th:value="${product.name}">
+                    <input type="hidden" name="price" th:value="${product.price}">
+                    <input type="hidden" name="pieces" th:value="${product.pieces}">
+                    <input type="hidden" name="promotion" th:value="${product.promotion}">
+                </form>
+                <button type="submit" th:form="${product.serialNo} + update">update</button>
             </td>
 
             <br>
         </tr>
-        <a href="/add">dodaj nowy produkt >></a>
+        <form action="/add-form" method="get" id="upd"></form>
+       <button type="submit" form="upd">dodaj nowy produkt</button>
     </table>
 </div>
 

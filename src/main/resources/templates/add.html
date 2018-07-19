@@ -30,34 +30,13 @@
 <body>
 
 <div class="container">
-    <!--<table>-->
-    <!--<tr>-->
-    <!--<th>name</th>-->
-    <!--<th>description</th>-->
-    <!--<th>categories</th>-->
-    <!--<th>pieces</th>-->
-    <!--<th>producer</th>-->
-    <!--<th>price</th>-->
-    <!--<th>promotion</th>-->
-    <!--</tr>-->
-    <!--<tr th:each="product : ${products}">-->
-    <!--<td><a href="#" th:text="${product.name}"></a></td>-->
-    <!--<td><a href="#" th:text="${product.description}"></a></td>-->
-    <!--<td><a href="/categories" th:text="${product.categories}"></a></td>-->
-    <!--<td><a href="#" th:text="${product.pieces}"></a></td>-->
-    <!--<td><a href="/producers" th:text="${product.producer}"></a></td>-->
-    <!--<td><a href="#" th:text="${product.price}"></a></td>-->
-    <!--<td><a href="#" th:text="${product.promotion}"></a></td>-->
-    <!--<br>-->
-    <!--</tr>-->
-    <!--</table>-->
 
     <div class="row">
         <div class="col-sm-6" style="min-height: 120px"></div>
     </div>
     <div class="row">
         <div class="col-sm-6">
-            <form action="/add-new" method="post">
+            <form action="/add" method="post">
                 <div class="form-group">
                     <label for="categorySelector">Wybierz kategorię</label>
                     <select class="form-control" id="categorySelector" name="category">
@@ -82,18 +61,23 @@
 
                 <div class="form-group">
                     <label for="piecesField">Ilość sztuk na magazynie</label>
-                    <input type="number" class="form-control" id="piecesField" rows="1" name="pieces"></input>
+                    <input type="number" class="form-control" id="piecesField" rows="1" name="pieces">
                 </div>
 
                 <div class="form-group">
                     <label for="priceField">Cena za sztukę</label>
-                    <input type="text" class="form-control" id="priceField" rows="1" name="price"></input>
+                    <input type="text" class="form-control" id="priceField" rows="1" name="price">
+                </div>
+
+                <div class="form-group">
+                    <label for="serialNoField">Numer serynjy produktu lub kod</label>
+                    <input type="text" class="form-control" id="serialNoField" rows="1" name="serialNo">
                 </div>
 
                 <label>Czy w promocji?</label>
                 <div class="group">
                     <label class="form-check-label" for="gridCheck1"> tak </label>
-                    <input type="radio" id="gridCheck1" name="promotion" value="true" >
+                    <input type="radio" id="gridCheck1" name="promotion" value="true">
                 </div>
 
                 <div class="group">
@@ -102,7 +86,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary">dodaj produkt</button>
-                <a href="/products">anuluj</a>
+                <a href="/products">cofnij do listy produktów</a>
 
                 <!--<div class="form-group">-->
                 <!--<label for="exampleFormControlTextarea1">Example textarea</label>-->

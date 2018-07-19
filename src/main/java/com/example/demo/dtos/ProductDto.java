@@ -20,6 +20,7 @@ public class ProductDto {
     private String producer;
     private int pieces;
     private boolean promotion;
+    private String serialNo;
 
 
 }

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link href="webjars/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-6" style="min-height: 120px"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <form action="/update" method="post" id="form" >
+                <input type="hidden" name="serialNo" th:value="${product.serialNo}">
+                <div class="form-group">
+                    <label for="productField">Wpisz nazwę produktu</label>
+                    <input class="form-control" id="productField" rows="1" name="name" th:value="${product.name}">
+                </div>
+
+                <div class="form-group">
+                    <label for="descriptionField">Opisz produkt</label>
+                    <input class="form-control" id="descriptionField" rows="2" name="description" th:value="${product.description}">
+                </div>
+
+                <div class="form-group">
+                    <label for="piecesField">Ilość sztuk na magazynie</label>
+                    <input type="number" class="form-control" id="piecesField" rows="1" name="pieces" th:value="${product.pieces}">
+                </div>
+
+                <div class="form-group">
+                    <label for="priceField">Cena za sztukę</label>
+                    <input type="text" class="form-control" id="priceField" rows="1" name="price" th:value="${product.price}">
+                </div>
+
+                <label>Czy w promocji?</label>
+                <div class="group">
+                    <label class="form-check-label" for="gridCheck1"> tak </label>
+                    <input type="radio" id="gridCheck1" name="promotion" value="true" >
+                </div>
+
+                <!--<div class="form-group">-->
+                    <!--<label for="serialNoField">Numer serynjy produktu lub kod</label>-->
+                    <!--<input type="text" class="form-control" id="serialNoField" rows="1" name="serialNo" th:value="${product.serialNo}">-->
+                <!--</div>-->
+
+                <div class="group">
+                    <label class="form-check-label" for="gridCheck2"> nie </label>
+                    <input type="radio" id="gridCheck2" name="promotion" value="false" checked>
+                </div>
+
+                <button type="submit" class="btn btn-primary" form="form">aktualizuj produkt</button>
+                <a href="/products">anuluj</a>
+
+            </form>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+</body>
+</html>
