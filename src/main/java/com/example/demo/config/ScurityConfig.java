@@ -22,6 +22,8 @@ public class ScurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated()
                 .and()
+                .headers().frameOptions().sameOrigin() //linijka dla bazy H2
+                .and()
                 .httpBasic();
               //  .anyRequest()
               //  .authenticated()

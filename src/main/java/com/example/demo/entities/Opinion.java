@@ -6,22 +6,22 @@ import lombok.*;
 import javax.persistence.*;
 import java.sql.Date;
 
-@Getter @Setter @AllArgsConstructor @NoArgsConstructor @ToString
-@Entity
-@Table(name = "opinion")
+//@Getter @Setter @AllArgsConstructor @NoArgsConstructor @ToString
+//@Entity
+//@Table(name = "opinion")
 public class Opinion {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+ //   @Id
+ //   @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "rating")
+ //   @Column(name = "rating")
     private int rating;
 
-    @Column(name = "comment")
+ //   @Column(name = "comment")
     private String comment;
 
-    @Column(name = "date")
+  //  @Column(name = "date")
     private Date date;
 
 }

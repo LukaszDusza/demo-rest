@@ -24,6 +24,11 @@ public class HomeController {
         return "index";
     }
 
+    @RequestMapping(value = "h2-console", method = RequestMethod.GET)
+    public String h2Console() {
+        return "/h2-console";
+    }
+
     // ======================================== get ====================================================================
 
     @RequestMapping(value = "products", method = RequestMethod.GET)
