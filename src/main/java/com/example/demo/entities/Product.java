@@ -36,7 +36,7 @@ public class Product {
 //    private Set<Category> categories = new HashSet<>();
 
     @Column(name = "price")
-    private BigDecimal price;
+    private BigDecimal price = new BigDecimal(0);
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_producer")
@@ -48,7 +48,7 @@ public class Product {
     @Column(name = "promotion")
     private boolean promotion;
 
-    @Column(name = "serialNo")
+    @Column(name = "serial_no")
     private String serialNo;
 
     @Column(name = "picture") //zmienic w bazie danych na long text, gdy linki z google.
